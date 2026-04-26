@@ -1,26 +1,148 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f4fb;
+  --foreground: #181225;
+  --card: #ffffff;
+  --card-foreground: #181225;
+  --primary: #ec4899;
+  --primary-foreground: #09020d;
+  --secondary: #7c3aed;
+  --secondary-foreground: #ffffff;
+  --muted: #f1e8f7;
+  --muted-foreground: #6d6078;
+  --border: rgba(124, 58, 237, 0.16);
+  --input: rgba(124, 58, 237, 0.18);
+  --ring: #ec4899;
+}
+
+.dark {
+  --background: #171729;
+  --foreground: #ffffff;
+  --card: #10101d;
+  --card-foreground: #ffffff;
+  --primary: #f472b6;
+  --primary-foreground: #130718;
+  --secondary: #8b5cf6;
+  --secondary-foreground: #ffffff;
+  --muted: #202039;
+  --muted-foreground: rgba(255, 255, 255, 0.65);
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.14);
+  --ring: #f472b6;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  min-height: 100vh;
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+.app-container {
+  width: 100%;
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .app-container {
+    padding-inline: 2rem;
+  }
+}
+
+.nova-page {
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(236, 72, 153, 0.12),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(139, 92, 246, 0.14),
+      transparent 32rem
+    ),
+    var(--background);
+}
+
+.nova-glass {
+  background: rgba(16, 16, 29, 0.78);
+  border-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px);
+}
+
+.light .nova-glass {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(124, 58, 237, 0.16);
+}
+
+.nova-gradient-text {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nova-gradient-bg {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+}
+
+.nova-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+}
+
+.nova-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.nova-scrollbar::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+.nova-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(#8b5cf6, #ec4899);
+  border-radius: 999px;
 }
